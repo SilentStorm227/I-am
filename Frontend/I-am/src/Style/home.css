@@ -1,3 +1,18 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
 .navbar{
     text-align: center;
+    font-size: 3em;
+}
+
+.p1{
+    width: 1700px;
+    height: 700px;
+    border-radius: 20px;
+}
+
+.products{
+    font-size: 60px;
 }
