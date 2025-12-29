@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import p1 from "../assets/2.jpg"
 import p2 from "../assets/Product pictures/1/IMG_2230.jpg"
 import p3 from "../assets/Product pictures/2/IMG_2251.jpg"
+import "../Style/slideshow.css"
 
 const images = [
     p1,p2,p3
@@ -20,7 +21,7 @@ const Slideshow = ()=>{
 
     return(
         <div>
-            <img className="iimg" src={images[Index]} alt = {`Slide ${Index + 1}`} />
+            <img className="iimg2" src={images[Index]} alt = {`Slide ${Index + 1}`} />
         </div>
     )
 };

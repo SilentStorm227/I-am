@@ -7,6 +7,9 @@ function Chains1() {
         <div>
             <h1>Flower trouser/skirt chain</h1>
             <Slideshow />
+            <button className="+">+</button>
+            <input className="num"></input>
+            <button className="-">-</button>
         </div>
     )
 }
