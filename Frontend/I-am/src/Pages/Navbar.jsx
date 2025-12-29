@@ -15,6 +15,14 @@ function Navbar() {
                     <Link to="/custom-order" className="right">
                         <button className="button1">Custom order</button>
                     </Link>
+
+                    <Link to="/login" className="right">
+                        <button className="button1">Login</button>
+                    </Link>
+
+                    <Link to="/sign-in" className="right">
+                        <button className="button1">Sign up</button>
+                    </Link>
             </nav>
         </div>
     )
