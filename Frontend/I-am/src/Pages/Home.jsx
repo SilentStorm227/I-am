@@ -7,8 +7,7 @@ import p2 from "../assets/2.jpg"
 function Home(){
     return(
         <div>
-            <div className="navbar">
-            <h1>I am ...</h1>
+            <div className="navbaar">
             <img className="p1" src={p1}></img>
             </div>
             <h2 className="products">Products</h2>

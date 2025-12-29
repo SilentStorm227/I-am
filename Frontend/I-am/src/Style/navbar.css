@@ -1,0 +1,21 @@
+.button1{
+    height: 50px;
+    width: 90px;
+    font-size: 15px;
+    font-weight: bold;
+    float: right;
+}
+
+/* .logo{
+    text-align: center;
+    font-size: 5em;
+    font-weight: bold;
+} */
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
