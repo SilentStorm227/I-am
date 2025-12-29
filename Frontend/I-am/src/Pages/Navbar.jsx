@@ -12,9 +12,6 @@ function Navbar() {
                     </Link>
 
                 </div>
-                    <Link to="/custom-order" className="right">
-                        <button className="button1">Custom order</button>
-                    </Link>
 
                     <Link to="/login" className="right">
                         <button className="button1">Login</button>
@@ -22,6 +19,14 @@ function Navbar() {
 
                     <Link to="/sign-in" className="right">
                         <button className="button1">Sign up</button>
+                    </Link>
+
+                    <Link to="/cart" className="right">
+                        <button className="button1">Cart</button>
+                    </Link>
+
+                    <Link to="/custom-order" className="right">
+                        <button className="button1">Custom order</button>
                     </Link>
             </nav>
         </div>

@@ -8,6 +8,7 @@ import Navbar from './Pages/Navbar';
 import Custom from "./Pages/Custom";
 import Login from "./Pages/Login";
 import Signin from "./Pages/Signin";
+import Cart from "./Pages/Cart";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='/custom-order' element={<Custom />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Sign-in' element={<Signin />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
 
       </Router>

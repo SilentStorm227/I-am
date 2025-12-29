@@ -14,8 +14,13 @@
 
 .left{
     float: left;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-left: 7px;
 }
 
 .right{
     float: right;
+    margin-top: 10px;
+    margin-right: 7px;
 }
