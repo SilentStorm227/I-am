@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../Style/home.css"
 import p1 from "../assets/1.png"
 import p2 from "../assets/2.jpg"
@@ -11,9 +12,12 @@ function Home(){
             <img className="p1" src={p1}></img>
             </div>
             <h2 className="products">Products</h2>
+
             <div className="row">
                 <div className="column">
+                    <Link to="./1">
                     <img  className="iimg" src={p2}></img>
+                    </Link>
                 </div>
 
                 <div className="column">
