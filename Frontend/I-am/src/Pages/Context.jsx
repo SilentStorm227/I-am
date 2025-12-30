@@ -27,12 +27,33 @@ export function CartProvider({children}){
         setCart(prev => prev.filter(item => item.id !== id));
     };
 
+    const incQty = (id) => {
+        setCart(prev =>
+            prev.map(item =>
+                item.id == id
+                ? {...item, quantity: item.quantity + 1}
+                : item
+            )
+        );
+    };
+
+    const decQty = (id) =>{
+        setCart(prev =>
+            prev.map(item =>
+                item.id == id
+                ? {...item, quantity: item.quantity - 1}
+                : item
+            )
+            .filter(item => item.quantity > 0)
+        );
+    };
+
     useEffect(() =>{
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
 
     return(
-        <cartContext.Provider value={{cart, addtoCart, removefromCart}}>
+        <cartContext.Provider value={{cart, addtoCart, removefromCart, incQty, decQty}}>
             {children}
         </cartContext.Provider>
     );

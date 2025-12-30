@@ -27,10 +27,11 @@ function Navbar() {
                         <button className="button1">Sign up</button>
                     </Link>
 
-                    <Link to="/cart" className="right">
-                        {/* <button className="button1">Cart</ */}
-                        <img src={c1}> {total} </img>
+                    <Link to="/cart" className="right cart-icon">
+                         <img src={c1} alt="cart" />
+                        <span className="cart-count">{total}</span>
                     </Link>
+
 
                     <Link to="/custom-order" className="right">
                         <button className="button1">Custom order</button>
