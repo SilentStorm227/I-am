@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "../Style/navbar.css"
+import c1 from "../assets/1.svg"
+import { useContext } from "react";
+import { cartContext } from "./Context";
 
 function Navbar() {
+    const {cart} = useContext(cartContext);
+
+    const total = cart.reduce((sum, item) => sum + item.quantity, 0);
     return(
         <div>
             <nav className="nav">
@@ -22,7 +28,8 @@ function Navbar() {
                     </Link>
 
                     <Link to="/cart" className="right">
-                        <button className="button1">Cart</button>
+                        {/* <button className="button1">Cart</ */}
+                        <img src={c1}> {total} </img>
                     </Link>
 
                     <Link to="/custom-order" className="right">
