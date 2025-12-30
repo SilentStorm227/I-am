@@ -16,7 +16,7 @@ export function CartProvider({children}){
                     : item
                 );
             }
-            return [,,,prev, {...product, quantity}];
+            return [...prev, {...product, quantity}];
         });
     };
 

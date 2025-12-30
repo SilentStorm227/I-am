@@ -4,14 +4,11 @@ import Slideshow from "./Slideshow";
 import "../Style/chains.css"
 import { cartContext } from "./Context";
 
-
-
 function Chains1() {
 
 const {addtoCart} = useContext(cartContext)
 
 const [quantity, setQuantity] = useState(1)
-
 const stock = 10;
 
 const inc = ()=>{
