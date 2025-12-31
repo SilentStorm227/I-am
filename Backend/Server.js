@@ -6,14 +6,15 @@ import customOrderRoutes from "./Routes/CustomOrder.js";
 const web = express();
 
 web.use(cors({
-    origin: "mongodb://localhost:27017/",
+    // origin: "mongodb://localhost:27017/",
+    origin: "http://localhost:5173",
     methods: ["GET", "POST"],
 }));
 
 web.use(express.json());
 web.use("/uploads", express.static("uploads"));
 
-mongoose.connect("mongodb://127.0.0.1:27017/Iam")
+mongoose.connect("mongodb://127.0.0.1:27017/custom-order")
     .then(()=> console.log("MongoDB connected"))
     .catch(err => console.err(err));
 

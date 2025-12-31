@@ -3,10 +3,18 @@ import mongoose from "mongoose";
 const customOrderSchema = new mongoose.Schema({
     message: String,
     image: String,
-    CreatedAt: {
-        type: Date,
-        default: Date.now
+    status: {
+        type: String,
+        default: "Pending......."
+    },
+    price: {
+        type: Number,
+        default: null
     }
-});
+},
+
+{timestamps: true}
+
+);
 
 export default mongoose.model("CustomOrder", customOrderSchema);

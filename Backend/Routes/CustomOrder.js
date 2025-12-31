@@ -17,6 +17,10 @@ const upload = multer({storage});
 // POST custom order
 router.post("/", upload.single("image"), async (req,res) => {
     try{
+        console.log("🔥 ROUTE HIT");
+        console.log("BODY:", req.body);
+        console.log("FILE:", req.file);
+        
         const newOrder = new CustomOrder({
             message: req.body.message,
             image: req.file ? req.file.filename : null

@@ -8,7 +8,9 @@ function Custom() {
     const [success, setSuccess] = useState(false);
 
     const handleImage = (e) => {
-        const file = e.target.file[0];
+        const file = e.target.files[0];
+        if (!file) return;
+
         setImage(file);
         setPreview(URL.createObjectURL(file));
     };
@@ -20,7 +22,7 @@ function Custom() {
         formData.append("message", message);
         if (image) formData.append("image", image);
 
-        const res = await fetch("http://localhost:5000/api/Iam", {
+        const res = await fetch("http://localhost:5000/api/custom-order", {
             method: "POST",
             body: formData
         });
@@ -51,7 +53,7 @@ function Custom() {
 
                 <input
                 type="file"
-                accept="images/*"
+                accept="image/*"
                 onChange={handleImage}
                 />
 
