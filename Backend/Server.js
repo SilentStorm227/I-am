@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import customOrderRoutes from "./Routes/CustomOrder";
+import customOrderRoutes from "./Routes/CustomOrder.js";
 
 const web = express();
 

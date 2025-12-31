@@ -4,7 +4,14 @@ import "../Style/custom order.css"
 function Custom() {
     const [message, setMessage] = useState("");
     const [image, setImage] = useState(null);
+    const [preview, setPreview] = useState(null);
     const [success, setSuccess] = useState(false);
+
+    const handleImage = (e) => {
+        const file = e.target.file[0];
+        setImage(file);
+        setPreview(URL.createObjectURL(file));
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,7 +20,7 @@ function Custom() {
         formData.append("message", message);
         if (image) formData.append("image", image);
 
-        const res = await fetch("http://localhost:5000/api/custom-order", {
+        const res = await fetch("http://localhost:5000/api/Iam", {
             method: "POST",
             body: formData
         });
@@ -22,6 +29,7 @@ function Custom() {
             setSuccess(true);
             setMessage("");
             setImage(null);
+            setPreview(null);
         }
         };
     
@@ -43,9 +51,17 @@ function Custom() {
 
                 <input
                 type="file"
-                accept="images/"
-                onChange={(e) => setImage(e.target.files[0])}
+                accept="images/*"
+                onChange={handleImage}
                 />
+
+                {preview && (
+                    <img
+                    src={preview}
+                    alt="preview"
+                    style={{width: "200px",marginTop: "10px"}}
+                    />
+                )}
 
                 <br />
 

@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import CustomOrder from "../Models/CustomOrder";
+import CustomOrder from "../Models/CustomOrder.js";
 
 const router = express.Router();
 
