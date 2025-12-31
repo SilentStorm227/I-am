@@ -17,14 +17,42 @@ function Custom() {
             method: "POST",
             body: formData
         });
-    }
+
+        if(res.ok){
+            setSuccess(true);
+            setMessage("");
+            setImage(null);
+        }
+        };
+    
     return(
         <div>
             <h1 className="text2">Make a custom order today!!</h1>
 
-            <input placeholder="Name"></input>
+            {success && <p>Order successfuly sent</p>}
+
+            <form onSubmit={handleSubmit}>
+                <textarea
+                placeholder="Describe what you want..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+                />
+
+                <br />
+
+                <input
+                type="file"
+                accept="images/"
+                onChange={(e) => setImage(e.target.files[0])}
+                />
+
+                <br />
+
+                <button type="submit">Send custom order</button>
+            </form>
         </div>
-    )
+    );
 }
 
 export default Custom;
