@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../Style/custom order.css"
 
 function Custom() {
@@ -68,6 +69,10 @@ function Custom() {
                 <br />
 
                 <button type="submit">Send custom order</button>
+
+                <Link to="/custom-orders">
+                    <button>See my orders!!</button>
+                </Link>
             </form>
         </div>
     );

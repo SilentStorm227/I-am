@@ -33,4 +33,9 @@ router.post("/", upload.single("image"), async (req,res) => {
     }
 });
 
+router.get("/", async(req, res) => {
+    const orders = await CustomOrder.find();
+    res.json(orders);
+});
+
 export default router;
