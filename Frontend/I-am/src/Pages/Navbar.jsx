@@ -4,6 +4,7 @@ import c1 from "../assets/1.svg"
 import { useContext } from "react";
 import { cartContext } from "./Context";
 
+
 function Navbar() {
     const {cart} = useContext(cartContext);
 
