@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "../Style/navbar.css"
 import c1 from "../assets/1.svg"
 import { useContext } from "react";
+
 import { cartContext } from "./Context";
 
 
