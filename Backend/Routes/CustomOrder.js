@@ -41,7 +41,7 @@ router.get("/", async(req, res) => {
 router.put("/:id", async (req, res) => {
     const {price, status} = req.body;
 
-    const update = await CustomOrder.findByIdAndUpdate(
+    const updated = await CustomOrder.findByIdAndUpdate(
         req.params.id,
         {price, status},
         {new: true}
