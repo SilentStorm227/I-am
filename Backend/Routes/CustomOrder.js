@@ -38,4 +38,17 @@ router.get("/", async(req, res) => {
     res.json(orders);
 });
 
+router.put("/:id", async (req, res) => {
+    const {price, status} = req.body;
+
+    const update = await CustomOrder.findByIdAndUpdate(
+        req.params.id,
+        {price, status},
+        {new: true}
+    );
+
+    res.json(updated);
+
+})
+
 export default router;

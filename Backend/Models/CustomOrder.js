@@ -5,6 +5,7 @@ const customOrderSchema = new mongoose.Schema({
     image: String,
     status: {
         type: String,
+        enum: ["Pending.......", "Priced", "completed"]
         default: "Pending......."
     },
     price: {
