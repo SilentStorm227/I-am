@@ -10,6 +10,7 @@ import Login from "./Pages/Login";
 import Signin from "./Pages/Signin";
 import Cart from "./Pages/Cart";
 import CustomOrders from "./Pages/Customorders";
+import Adminpage from './Pages/Adminpage';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path='/Sign-in' element={<Signin />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/custom-orders' element={<CustomOrders />} />
+          <Route path='/Admin' element={<Adminpage />} />
         </Routes>
 
       </Router>
