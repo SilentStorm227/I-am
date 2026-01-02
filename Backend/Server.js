@@ -2,8 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import customOrderRoutes from "./Routes/CustomOrder.js";
+import dotenv from "dotenv";
 
-const web = express();
+dotenv.config();
 
 web.use(cors({
     // origin: "mongodb://localhost:27017/",

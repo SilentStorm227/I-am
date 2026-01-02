@@ -1,6 +1,10 @@
 import express from "express";
 import multer from "multer";
 import CustomOrder from "../Models/CustomOrder.js";
+import nodemailer from "nodemailer"
+
+const web = express();
+
 
 const router = express.Router();
 
@@ -47,8 +51,25 @@ router.put("/:id", async (req, res) => {
         {new: true}
     );
 
+    // SEND EMAIL
+    await transporter.sendMail({
+        to: "customer@email.com", // later you can store user email
+        subject: "Your custom order is ready!",
+        text: `Your custom order has been priced at $${price}.`
+    })
+
     res.json(updated);
 
 })
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
+
 
 export default router;
