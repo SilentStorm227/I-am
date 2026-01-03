@@ -29,7 +29,7 @@ function Adminpage() {
 
     }
 
-            <Admin />
+            return <Admin />;
 
 }
 
