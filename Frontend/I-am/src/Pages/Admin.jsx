@@ -23,14 +23,14 @@ function Admin() {
 
         // refresh list
         const update = await fetch("http://localhost:5000/api/custom-order");
-        setOrders(await updateOrder.json());
+        setOrders(await update.json());
     };
 
     return(
         <div>
             <h1>Admin custom orders</h1>
 
-            {orders.map(order => {
+            {orders.map(order => (
                 <div key={order._id} style={{border: "1px solid gray", padding: 10, marginBottom: 10}}>
                     <p><b>Message:</b> {order.message} </p>
 
@@ -50,7 +50,7 @@ function Admin() {
 
                     </div>
 
-            })}
+            ))}
 
         </div>
     );
