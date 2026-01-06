@@ -11,7 +11,7 @@ function Admin() {
 
     const updateOrder = async (id, price) => {
         await fetch(`http://localhost:5000/api/custom-order/${id}`, {
-            method: PUT,
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },

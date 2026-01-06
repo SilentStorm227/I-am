@@ -37,15 +37,15 @@ router.post("/", upload.single("image"), async (req,res) => {
     }
 });
 
-router.get("/", async(req, res) => {
-    const orders = await CustomOrder.find();
+router.get("/", async (req,res) => {
+    const orders = await CustomOrder.find().sort({ CreatedAt: -1 });
     res.json(orders);
 });
 
 router.put("/:id", async (req, res) => {
     const {price, status} = req.body;
 
-    const updated = await CustomOrder.findByIdAndUpdate(
+    const order = await CustomOrder.findByIdAndUpdate(
         req.params.id,
         {price, status},
         {new: true}
@@ -58,7 +58,7 @@ router.put("/:id", async (req, res) => {
         text: `Your custom order has been priced at $${price}.`
     })
 
-    res.json(updated);
+    res.json(order);
 
 })
 

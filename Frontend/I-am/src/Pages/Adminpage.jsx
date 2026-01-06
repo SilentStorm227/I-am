@@ -24,7 +24,10 @@ function Adminpage() {
         }}
         >Enter</button>
 
+        <button onClick={() => setAuth(false)}>Logout</button>
+
         </div>
+        
     );
 
     }
