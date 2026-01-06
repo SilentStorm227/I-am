@@ -9,7 +9,7 @@ dotenv.config();
 web.use(cors({
     // origin: "mongodb://localhost:27017/",
     origin: "http://localhost:5173",
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT"],
 }));
 
 web.use(express.json());

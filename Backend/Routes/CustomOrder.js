@@ -18,6 +18,15 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage});
 
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
+
 // POST custom order
 router.post("/", upload.single("image"), async (req,res) => {
     try{
@@ -51,6 +60,7 @@ router.put("/:id", async (req, res) => {
         {new: true}
     );
 
+
     // SEND EMAIL
     await transporter.sendMail({
         to: "customer@email.com", // later you can store user email
@@ -62,13 +72,6 @@ router.put("/:id", async (req, res) => {
 
 })
 
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
 
 
 
