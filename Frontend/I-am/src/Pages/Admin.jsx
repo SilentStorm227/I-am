@@ -52,6 +52,9 @@ function Admin() {
 
             ))}
 
+
+        <button onClick={() => setAuth(false)}>Logout</button>
+
         </div>
     );
 }
