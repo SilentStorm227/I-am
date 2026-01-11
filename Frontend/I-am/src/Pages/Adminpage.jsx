@@ -2,7 +2,6 @@ import { useState } from "react";
 import Admin from "./Admin";
 
 
-
 function Adminpage() {
     const [auth, setAuth] = useState(false);
     const [password, setPassowrd] = useState("");
