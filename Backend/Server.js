@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+
 const web = express();
 
 web.use(cors({
