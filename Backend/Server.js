@@ -7,7 +7,6 @@ import dotenv from "dotenv";
 dotenv.config();
 const web = express();
 
-
 web.use(cors({
     // origin: "mongodb://localhost:27017/",
     origin: "http://localhost:5173",
