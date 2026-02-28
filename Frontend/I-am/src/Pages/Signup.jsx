@@ -34,7 +34,7 @@ function Signup() {
 
             <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value) } ></input><br /><br/>
 
-            <input placeholder="Set Passowrd" value={password} onChange={(e) => setPassword(e.target.value)} ></input><br /><br />
+            <input placeholder="Set Passowrd" value={password} type="password" onChange={(e) => setPassword(e.target.value)} ></input><br /><br />
 
             <button onClick={handlesignup}>Sign up</button>
         </div>
