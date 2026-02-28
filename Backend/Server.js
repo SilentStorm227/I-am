@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import customOrderRoutes from "./Routes/CustomOrder.js";
 import dotenv from "dotenv";
+import userRoutes from './Routes/User.js'
 
 dotenv.config();
 const web = express();
@@ -24,3 +25,5 @@ web.use("/api/custom-order", customOrderRoutes);
 web.listen(5000, () => {
     console.log("Server running on http://localhost:5000");
 });
+
+web.use("api/users", userRoutes);
