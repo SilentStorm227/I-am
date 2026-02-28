@@ -6,7 +6,7 @@ import Chains1 from "./Pages/Chains1"
 import Navbar from './Pages/Navbar';
 import Custom from "./Pages/Custom";
 import Login from "./Pages/Login";
-import Signin from "./Pages/Signin";
+import Signin from "./Pages/Signup";
 import Cart from "./Pages/Cart";
 import CustomOrders from "./Pages/Customorders";
 import Adminpage from './Pages/Adminpage';
