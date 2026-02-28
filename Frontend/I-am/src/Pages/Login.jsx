@@ -1,16 +1,43 @@
 import { useState } from "react";
 
 function Login() {
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = async ()=>{
+        const res = await fetch("http://localhost:5000/api/users/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name,
+                password
+            })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+        alert ("Login seccesful")
+
+        // Save user to localStorage (temporary session)
+        localStorage.setItem("user", JSON.stringify(data.user));
+    }
+    else{
+        alert(data.error)
+    }
+};
+
     return(
         <div>
             <h1>Login</h1>
 
-            <input placeholder="Name"></input><br /><br />
+            <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}></input><br /><br />
 
-            <input placeholder="Password" type="password"></input><br /><br />
+            <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input><br /><br />
 
-
-            <button>Login</button>
+            <button onClick={handleLogin} >Login</button>
         </div>
     )
 }
