@@ -31,11 +31,11 @@ return(
                     />
             )}
 
-            {order.status === "pending" && (
+            {status === "pending" && (
                 <p style={{color: "orange"}}>Waiting for price... ⏳ </p>
             )}
 
-            {order.status === "priced" && (
+            {status === "priced" && (
                 <>
                 <p><b>Price:</b> ${order.price} <span style={{ color: "green" }}>✅ Ready to order</span> </p>
                 <button onClick={() =>
@@ -52,7 +52,7 @@ return(
                 </>
             )}
 
-            {order.status === "completed" && (
+            {status === "completed" && (
                 <span style={{ color: "gray" }}>✔ Completed</span>
             )}
         </div>
