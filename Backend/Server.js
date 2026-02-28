@@ -21,9 +21,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/custom-order")
     .catch(err => console.err(err));
 
 web.use("/api/custom-order", customOrderRoutes);
+web.use("/api/users", userRoutes);
 
 web.listen(5000, () => {
     console.log("Server running on http://localhost:5000");
 });
-
-web.use("api/users", userRoutes);
