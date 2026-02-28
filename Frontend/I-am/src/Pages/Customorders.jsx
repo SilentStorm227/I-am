@@ -32,12 +32,12 @@ return(
             )}
 
             {status === "pending" && (
-                <p style={{color: "orange"}}>Waiting for price... ⏳ </p>
+                <p style={{color: "blue"}}>Waiting for price... ⏳ </p>
             )}
 
             {status === "priced" && (
                 <>
-                <p><b>Price:</b> ${order.price} <span style={{ color: "green" }}>✅ Ready to order</span> </p>
+                <p><b>Price:</b> ${order.price} <span style={{ color: "blue" }}>✅ Ready to order</span> </p>
                 <button onClick={() =>
                     addtoCart({
                         id: order._id,
@@ -53,7 +53,7 @@ return(
             )}
 
             {status === "completed" && (
-                <span style={{ color: "gray" }}>✔ Completed</span>
+                <span style={{ color: "blue" }}>✔ Completed</span>
             )}
         </div>
         )
