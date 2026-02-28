@@ -31,7 +31,7 @@ function Adminpage() {
 
     }
 
-            return <Admin />;
+            return <Admin logout={() => setAuth(false)} />;
 
 }
 

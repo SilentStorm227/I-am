@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Admin() {
+function Admin({ logout }) {
     const [orders, setOrders] = useState([]);
 
     useEffect(() =>{
@@ -16,7 +16,7 @@ function Admin() {
                 "Content-Type": "application/json"
             },
             body:JSON.stringify({
-                price,
+                price: Number(price),
                 status: "priced"
             })
         });
@@ -38,11 +38,19 @@ function Admin() {
                         <img src={`http://localhost:5000/uploads/${order.image}`} width="120" />
                     )}
 
-                    <p>Status: <b>{order.status}</b></p>
+                    <p>Status: <b>{order.status || "pending..."}</b></p>
 
                     {order.status === "pending" && (
                         <>
-                            <input type="Number" placeholder="price" onChange={(e) => order.newPrice = e.target.value } />
+                            <input type="Number" placeholder="price" 
+                            
+                            onChange={(e) => setOrders(prev =>
+                                prev.map(o =>
+                                    o._id === order._id
+                                    ? { ...o, newPrice: e.target.value}
+                                    : o
+                                )
+                            ) } />
 
                             <button onClick={() => updateOrder(order._id, order.newPrice)}>Set price</button>
                         </>
@@ -53,8 +61,7 @@ function Admin() {
             ))}
 
 
-        <button onClick={() => setAuth(false)}>Logout</button>
-
+        <button onClick={logout}>Logout</button>
         </div>
     );
 }

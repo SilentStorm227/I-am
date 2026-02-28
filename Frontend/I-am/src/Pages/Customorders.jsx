@@ -15,7 +15,11 @@ return(
     <div>
         <h1>My custom orders</h1>
 
-        {orders.map(order =>(
+        {orders.map(order =>{
+
+            const status = order.status || "pending";
+
+    return(
 
          <div key={order._id} style={{border: "1px solid #ccc", padding: 10, marginBottom: 10}}>
             <p><b>Message:</b> {order.message}</p>
@@ -51,10 +55,10 @@ return(
             {order.status === "completed" && (
                 <span style={{ color: "gray" }}>✔ Completed</span>
             )}
-
         </div>
+        )
 
-        ))}
+})}
 
     </div>
 );
