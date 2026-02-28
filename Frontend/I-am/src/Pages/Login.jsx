@@ -33,7 +33,7 @@ function Login() {
         <div>
             <h1>Login</h1>
 
-            <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)}></input><br /><br />
+            <input placeholder="Username" value={name} onChange={(e) => setName(e.target.value)}></input><br /><br />
 
             <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input><br /><br />
 

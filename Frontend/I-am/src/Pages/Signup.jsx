@@ -32,7 +32,7 @@ function Signup() {
             <h1>Sign up</h1>
             <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value) } ></input><br /><br />
 
-            <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value) } ></input><br /><br/>
+            <input placeholder="Username" value={name} onChange={(e) => setName(e.target.value) } ></input><br /><br/>
 
             <input placeholder="Set Passowrd" value={password} type="password" onChange={(e) => setPassword(e.target.value)} ></input><br /><br />
 

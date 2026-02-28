@@ -13,6 +13,10 @@ router.post("/signup", async(req, res) =>{
         if(existing){
             return res.json({error: "Email already exists"});
         }
+        const existingName = await User.findOne({ name });
+        if (existingName) {
+            return res.json({ error: "Name already taken" });
+        }
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -33,9 +37,10 @@ router.post("/signup", async(req, res) =>{
 
 router.post("/login", async (req, res)=>{
     try{
-        const {name, password} = requestAnimationFrame.body;
+        const {name, password} = req.body;
 
-        const user = await user.findOne({name});
+        const user = await User.findOne({name});
+        
         if(!user){
             return res.json({error: "user not found"});
         }
