@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleLogin = async ()=>{
         const res = await fetch("http://localhost:5000/api/users/login", {
@@ -22,7 +24,7 @@ function Login() {
         // Save user to localStorage (temporary session)
         localStorage.setItem("token", data.token);
 
-        alert ("Login seccesful")
+        navigate("/custom")
     }
     else{
         alert(data.error)

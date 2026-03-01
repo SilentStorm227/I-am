@@ -6,7 +6,13 @@ function Customorders(){
     const {addtoCart} = useContext(cartContext);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/custom-order")
+        const token = localStorage.getItem("token");
+
+        fetch("http://localhost:5000/api/custom-order",{
+            headers:{
+                Authorization: token
+            }
+        })
         .then(res => res.json())
         .then(data => setOrders(data));
     }, []);
