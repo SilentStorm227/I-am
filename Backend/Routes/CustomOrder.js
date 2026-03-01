@@ -56,6 +56,25 @@ router.get("/", auth, async (req,res) => {
     res.json(orders);
 });
 
+router.ger("/all", auth, async(req, res) => {
+
+    // 🔒 Admin check
+    if(req.user.role !== "admin"){
+        return res.status(403).json({error: "Not authorized!!"});
+    }
+
+    try{
+        const orders = await CustomOrder
+        .find()
+        .populate("user", "name"); // show user & name
+
+        res.json(orders);
+    }
+    catch(err){
+        res.status(500).json({error: "server error"})
+    }
+})
+
 router.put("/:id", async (req, res) => {
     const {price, status} = req.body;
 
