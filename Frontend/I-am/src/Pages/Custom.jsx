@@ -23,8 +23,13 @@ function Custom() {
         formData.append("message", message);
         if (image) formData.append("image", image);
 
+        const token = localStorage.getItem("token");
+
         const res = await fetch("http://localhost:5000/api/custom-order", {
             method: "POST",
+            headers: {
+                Authorization: token
+            },
             body: formData
         });
 
