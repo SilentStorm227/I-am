@@ -20,6 +20,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage});
 
 
+
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -37,7 +38,8 @@ router.post("/", auth, upload.single("image"), async (req,res) => {
         
         const newOrder = new CustomOrder({
             message: req.body.message,
-            image: req.file ? req.file.filename : null
+            image: req.file ? req.file.filename : null,
+            userId: req.user.id
         });
 
         await newOrder.save();
@@ -47,8 +49,10 @@ router.post("/", auth, upload.single("image"), async (req,res) => {
     }
 });
 
-router.get("/", async (req,res) => {
-    const orders = await CustomOrder.find().sort({ CreatedAt: -1 });
+router.get("/", auth, async (req,res) => {
+    const orders = await CustomOrder.find({
+        userId: req.user.id
+    }).sort({ createdAt: -1 });
     res.json(orders);
 });
 
