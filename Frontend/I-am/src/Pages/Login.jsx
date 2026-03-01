@@ -20,7 +20,7 @@ function Login() {
 
     if (data.success) {
         // Save user to localStorage (temporary session)
-        localStorage.setItem(("token", data.token));
+        localStorage.setItem("token", data.token);
 
         alert ("Login seccesful")
     }

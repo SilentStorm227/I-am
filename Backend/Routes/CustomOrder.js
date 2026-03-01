@@ -2,7 +2,7 @@ import express from "express";
 import multer from "multer";
 import CustomOrder from "../Models/CustomOrder.js";
 import nodemailer from "nodemailer"
-import auth from "../Middleware/auth.js";
+import auth from "../Middleware/Auth.js";
 
 const web = express();
 
