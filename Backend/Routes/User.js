@@ -50,13 +50,16 @@ router.post("/login", async (req, res)=>{
             return res.json({error: "wrong password"});
         }
 
+        // 🔐 Create token
+        const token = jwt.sign(
+            {id: user._id},
+            process.env.JWT_SECRET,
+            {expiresIn: "1d"}
+        );
+
         res.json({
             success: true,
-            user: {
-                id: user._id,
-                name: user.name,
-                email:user.email
-            }
+            token
         });
     }
     catch(err){
