@@ -2,9 +2,14 @@ import { useEffect, useState } from "react";
 
 function Admin({ logout }) {
     const [orders, setOrders] = useState([]);
+    const token = localStorage.getItem("token");
 
     useEffect(() =>{
-        fetch("http://localhost:5000/api/custom-order")
+        fetch("http://localhost:5000/api/custom-order", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }) 
         .then(res => res.json())
         .then(data => setOrders(data));
     }, []);
@@ -13,7 +18,8 @@ function Admin({ logout }) {
         await fetch(`http://localhost:5000/api/custom-order/${id}`, {
             method: "PUT",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
             },
             body:JSON.stringify({
                 price: Number(price),
@@ -22,7 +28,11 @@ function Admin({ logout }) {
         });
 
         // refresh list
-        const update = await fetch("http://localhost:5000/api/custom-order");
+        const update = await fetch("http://localhost:5000/api/custom-order/all", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
         setOrders(await update.json());
     };
 
@@ -32,10 +42,12 @@ function Admin({ logout }) {
 
             {orders.map(order => (
                 <div key={order._id} style={{border: "1px solid gray", padding: 10, marginBottom: 10}}>
+
+                    <p><b>User:</b> {order.user?.name}</p>
                     <p><b>Message:</b> {order.message} </p>
 
                     {order.image && (
-                        <img src={`http://localhost:5000/uploads/${order.image}`} width="120" />
+                        <img src={`http://localhost:5000/uploads/${order.image}`} width="120" alt="order image" />
                     )}
 
                     <p>Status: <b>{order.status || "pending..."}</b></p>
