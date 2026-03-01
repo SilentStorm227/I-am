@@ -19,10 +19,10 @@ function Login() {
     const data = await res.json();
 
     if (data.success) {
-        alert ("Login seccesful")
-
         // Save user to localStorage (temporary session)
-        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem(("token", data.token));
+
+        alert ("Login seccesful")
     }
     else{
         alert(data.error)
