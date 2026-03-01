@@ -56,7 +56,7 @@ router.get("/", auth, async (req,res) => {
     res.json(orders);
 });
 
-router.ger("/all", auth, async(req, res) => {
+router.get("/all", auth, async(req, res) => {
 
     // 🔒 Admin check
     if(req.user.role !== "admin"){

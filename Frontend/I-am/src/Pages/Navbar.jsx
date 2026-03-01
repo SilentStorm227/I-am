@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
     const {cart} = useContext(cartContext);
-    const mavigate = useNavigate();
+    const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
     let username = "";

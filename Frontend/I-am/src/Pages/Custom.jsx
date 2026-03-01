@@ -28,7 +28,7 @@ function Custom() {
         const res = await fetch("http://localhost:5000/api/custom-order", {
             method: "POST",
             headers: {
-                Authorization: token
+                Authorization: `Bearer ${token}`
             },
             body: formData
         });
@@ -75,7 +75,7 @@ function Custom() {
 
                 <button type="submit">Send custom order</button>
 
-                <Link to="/custom-orders">
+                <Link to="/custom-order">
                     <button>See my orders!!</button>
 
                 </Link>

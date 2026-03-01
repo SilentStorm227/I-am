@@ -9,7 +9,6 @@ import Login from "./Pages/Login";
 import Signin from "./Pages/Signup";
 import Cart from "./Pages/Cart";
 import CustomOrders from "./Pages/Customorders";
-import Adminpage from './Pages/Adminpage';
 
 
 function App() {
@@ -27,8 +26,7 @@ function App() {
           <Route path='/Login' element={<Login />} />
           <Route path='/Sign-in' element={<Signin />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/custom-orders' element={<CustomOrders />} />
-          <Route path='/Admin' element={<Adminpage />} />
+          <Route path='/custom-order' element={<CustomOrders />} />
         </Routes>
 
       </Router>

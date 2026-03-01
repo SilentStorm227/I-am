@@ -55,7 +55,7 @@ router.post("/login", async (req, res)=>{
             {
                 id: user._id,
                 name: user.name,
-                role: usewr.role
+                role: user.role || "user"
             },
             process.env.JWT_SECRET,
             {expiresIn: "1d"}

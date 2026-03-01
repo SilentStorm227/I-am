@@ -10,12 +10,16 @@ function Customorders(){
 
         fetch("http://localhost:5000/api/custom-order",{
             headers:{
-                Authorization: token
+                Authorization: `Bearer ${token}`
             }
         })
         .then(res => res.json())
         .then(data => setOrders(data));
     }, []);
+
+    if (!Array.isArray(orders)) {
+    return <h2>Loading...</h2>;
+}
 
 return(
     <div>
