@@ -2,6 +2,7 @@ import express from "express";
 import multer from "multer";
 import CustomOrder from "../Models/CustomOrder.js";
 import nodemailer from "nodemailer"
+import auth from "../Middleware/auth.js";
 
 const web = express();
 
@@ -28,7 +29,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // POST custom order
-router.post("/", upload.single("image"), async (req,res) => {
+router.post("/", auth, upload.single("image"), async (req,res) => {
     try{
         console.log("🔥 ROUTE HIT");
         console.log("BODY:", req.body);
