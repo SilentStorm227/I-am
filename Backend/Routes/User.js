@@ -52,7 +52,11 @@ router.post("/login", async (req, res)=>{
 
         // 🔐 Create token
         const token = jwt.sign(
-            {id: user._id},
+            {
+                id: user._id,
+                name: user.name,
+                role: usewr.role
+            },
             process.env.JWT_SECRET,
             {expiresIn: "1d"}
         );
