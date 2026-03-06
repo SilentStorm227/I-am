@@ -1,7 +1,6 @@
 import express from "express";
 import multer from "multer";
 import CustomOrder from "../Models/CustomOrder.js";
-import nodemailer from "nodemailer"
 import auth from "../Middleware/Auth.js";
 import transporter from "../utils/mailer.js";
 
@@ -19,16 +18,6 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({storage});
-
-
-
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: "YOUR_EMAIL@gmail.com",
-        pass: "YOUR_APP_PASSWORD"
-    }
-});
 
 // POST custom order
 router.post("/", auth, upload.single("image"), async (req,res) => {
@@ -96,9 +85,52 @@ router.put("/:id", auth, async (req, res) => {
 
     await transporter.sendMail({
         to: order.userId.email, // later you can store user email
-        subject: "Your custom order is ready!",
-        text: `Your custom order has been priced at $${price}. 
-        You can now log in and add it to your cart!!!!`
+        subject: "Your custom beaded order is ready! ✨",
+        text: `
+    <div style="background:#FFF7E8;padding:40px;font-family:Arial, sans-serif;">
+        
+        <div style="max-width:520px;margin:auto;background:white;border-radius:14px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.05);">
+
+            <div style="background:#87CEEB;padding:20px;text-align:center;">
+                <h2 style="margin:0;color:white;">Your custom order is ready! 🧸</h2>
+            </div>
+
+            <div style="padding:25px;color:#444;">
+
+                <p>Hi <b>${order.userId.name}</b>,</p>
+
+                <p>
+                Your custom beaded creation is finished and ready to order!
+                </p>
+
+                <div style="background:#FFF7E8;padding:15px;border-radius:10px;margin:20px 0;font-size:18px;">
+                    <strong>Price:</strong> $${price}
+                </div>
+
+                <p>
+                You can now log in to your account and add it to your cart.
+                </p>
+
+                <div style="text-align:center;margin:30px 0;">
+                    <a href="http://localhost:5173/custom-order"
+                       style="background:#87CEEB;color:white;padding:12px 22px;text-decoration:none;border-radius:8px;font-weight:bold;">
+                       View my custom order
+                    </a>
+                </div>
+
+                <p style="margin-top:30px;">
+                Thank you for supporting handmade creations 💙
+                </p>
+
+                <p style="font-size:12px;color:#888;margin-top:30px;">
+                If you didn't request this order, you can safely ignore this email.
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+    `
     });
     }
     res.json(order);
