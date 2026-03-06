@@ -87,12 +87,13 @@ router.put("/:id", auth, async (req, res) => {
         to: order.userId.email, // later you can store user email
         subject: "Your custom beaded order is ready! ✨",
         text: `
-    <div style="background:#FFF7E8;padding:40px;font-family:Arial, sans-serif;">
+         <div style="background:#FFF7E8;padding:40px;font-family:Arial, sans-serif;">
         
         <div style="max-width:520px;margin:auto;background:white;border-radius:14px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,0.05);">
 
-            <div style="background:#87CEEB;padding:20px;text-align:center;">
-                <h2 style="margin:0;color:white;">Your custom order is ready! 🧸</h2>
+            <div style="background:#87CEEB;padding:25px;text-align:center;color:white;">
+                <h1 style="margin:0;font-size:24px;">🧸 Your Beaded Buddies</h1>
+                <p style="margin:5px 0 0 0;font-size:14px;">Tiny handmade beaded creatures</p>
             </div>
 
             <div style="padding:25px;color:#444;">
@@ -100,7 +101,7 @@ router.put("/:id", auth, async (req, res) => {
                 <p>Hi <b>${order.userId.name}</b>,</p>
 
                 <p>
-                Your custom beaded creation is finished and ready to order!
+                Your custom beaded creation is ready!
                 </p>
 
                 <div style="background:#FFF7E8;padding:15px;border-radius:10px;margin:20px 0;font-size:18px;">
@@ -108,7 +109,7 @@ router.put("/:id", auth, async (req, res) => {
                 </div>
 
                 <p>
-                You can now log in to your account and add it to your cart.
+                You can now log in and add it to your cart.
                 </p>
 
                 <div style="text-align:center;margin:30px 0;">
@@ -120,10 +121,6 @@ router.put("/:id", auth, async (req, res) => {
 
                 <p style="margin-top:30px;">
                 Thank you for supporting handmade creations 💙
-                </p>
-
-                <p style="font-size:12px;color:#888;margin-top:30px;">
-                If you didn't request this order, you can safely ignore this email.
                 </p>
 
             </div>
