@@ -3,6 +3,7 @@ import multer from "multer";
 import CustomOrder from "../Models/CustomOrder.js";
 import nodemailer from "nodemailer"
 import auth from "../Middleware/Auth.js";
+import transporter from "../utils/mailer.js";
 
 const web = express();
 
@@ -24,8 +25,8 @@ const upload = multer({storage});
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: "YOUR_EMAIL@gmail.com",
+        pass: "YOUR_APP_PASSWORD"
     }
 });
 
@@ -66,7 +67,7 @@ router.get("/all", auth, async(req, res) => {
     try{
         const orders = await CustomOrder
         .find()
-        .populate("user", "name"); // show user & name
+        .populate("userId", "name"); // show user & name
 
         res.json(orders);
     }
@@ -75,25 +76,33 @@ router.get("/all", auth, async(req, res) => {
     }
 })
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
+
+    if(req.user.role !== "admin"){
+        return res.status(403).json({error: "not authorized"});
+    }
+
     const {price, status} = req.body;
 
     const order = await CustomOrder.findByIdAndUpdate(
         req.params.id,
         {price, status},
         {new: true}
-    );
-
+    )
+    .populate("userId");
 
     // SEND EMAIL
-    await transporter.sendMail({
-        to: "customer@email.com", // later you can store user email
-        subject: "Your custom order is ready!",
-        text: `Your custom order has been priced at $${price}.`
-    })
+    if (status === "priced"){
 
+    await transporter.sendMail({
+        to: order.userId.email, // later you can store user email
+        subject: "Your custom order is ready!",
+        text: `Your custom order has been priced at $${price}. 
+        You can now log in and add it to your cart!!!!`
+    });
+    }
     res.json(order);
 
-})
+});
 
 export default router;

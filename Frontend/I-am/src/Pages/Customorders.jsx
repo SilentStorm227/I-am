@@ -14,7 +14,11 @@ function Customorders(){
             }
         })
         .then(res => res.json())
-        .then(data => setOrders(data));
+        .then(data => {
+            if(Array.isArray(data)){
+                setOrders(data);
+            }
+        });
     }, []);
 
     if (!Array.isArray(orders)) {
