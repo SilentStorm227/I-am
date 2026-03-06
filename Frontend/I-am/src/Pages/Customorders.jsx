@@ -56,7 +56,8 @@ return(
                     addtoCart({
                         id: order._id,
                         name: "Custom order",
-                        price: order.price,
+                        price: parseFloat(order.price) || 0,
+                        image: order.image,
                         quantity: 1
                     })
                 }

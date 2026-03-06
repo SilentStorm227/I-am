@@ -5,7 +5,8 @@ function Cart() {
     const {cart, removefromCart, incQty, decQty} = useContext(cartContext);
 
     const totalPrice = cart.reduce(
-        (sum, item) => sum + item.price * item.quantity, 0
+        (sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 0),
+        0
     );
 
     if(cart.length === 0 ){
@@ -18,12 +19,19 @@ function Cart() {
 
             {cart.map((item) =>(
                 <div key={item.id}>
+
                     <h4>{item.name}</h4>
+                {item.image && (
+                        <img 
+                            src={`http://localhost:5000/uploads/${item.image}`}
+                            width="100"
+                        />
+                    )}
+
                     <p>Quantity: {item.quantity}</p>
-                    <p>Price: {item.price * item.quantity}</p>
-
-
+                    <p>Price: ${(Number(item.price || 0) * Number(item.quantity || 0)).toFixed(2)}</p>
          <div>
+
                 <button onClick={() => decQty(item.id)}>-</button>
                  <span style={{ margin: "0 10px" }}>{item.quantity}</span>
                 <button onClick={() => incQty(item.id)}>+</button>
@@ -38,7 +46,9 @@ function Cart() {
 
             ))}
 
-   
+<h2 style={{marginTop:"20px"}}>
+                Total: ${totalPrice.toFixed(2)}
+            </h2>
 
         </div>
     );

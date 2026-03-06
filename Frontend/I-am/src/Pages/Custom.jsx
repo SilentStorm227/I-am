@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Style/custom order.css"
 
 function Custom() {
@@ -7,6 +8,7 @@ function Custom() {
     const [image, setImage] = useState(null);
     const [preview, setPreview] = useState(null);
     const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
 
     const handleImage = (e) => {
         const file = e.target.files[0];
