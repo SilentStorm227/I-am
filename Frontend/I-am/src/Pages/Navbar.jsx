@@ -7,6 +7,7 @@ import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 
+
 function Navbar() {
     const {cart} = useContext(cartContext);
     const navigate = useNavigate();
