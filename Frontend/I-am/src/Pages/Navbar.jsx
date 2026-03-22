@@ -50,7 +50,6 @@ function Navbar() {
                         <span className="cart-count">{total}</span>
                     </Link>
 
-p
                     <Link to="/custom" className="right">
                         <button className="button1">Custom order</button>
                     </Link>
