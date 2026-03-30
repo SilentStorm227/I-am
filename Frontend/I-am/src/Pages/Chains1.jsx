@@ -39,12 +39,9 @@ if (res.ok) {
 };
 
 const [quantity, setQuantity] = useState(1)
-const stock = 10;
 
 const inc = ()=>{
-    if (quantity < stock){
         setQuantity(quantity + 1);
-    }
 };
 
 const dec = ()=>{
@@ -73,9 +70,9 @@ const average =
 
             <Slideshow />
 
-            <button className="inc" onClick={inc} disabled={quantity === stock} >+</button>
+            <button className="inc" onClick={inc} >+</button>
 
-            <input className="num" type="number" min="1" max={stock} step="1" value={quantity}
+            <input className="num" type="number" min="1" step="1" value={quantity}
             onChange={(e) =>{
                 let value = Number(e.target.value);
 
