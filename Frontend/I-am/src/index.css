@@ -68,3 +68,60 @@ button:focus-visible {
 } */
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+
+:root{
+    --blue-bg: #CFE3FF;
+    --blue-main: #5A78B5;
+    --blue-soft: #9CC4FF;
+    --cream: #FFF8EE;
+    --text-soft: #3A4A6A;
+}
+
+body{
+    margin: 0;
+    background-color: var(--blue-bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-soft);
+    box-sizing: border-box;
+}
+
+h1, h2, h3{
+    font-family: 'Nunito', sans-serif;
+    color: var(--blue-main);
+    letter-spacing: 1px;
+}
+
+button{
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--blue-main);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+/* 
+button:hover{
+    background-color: var(--blue-soft);
+} */
+
+button:hover{
+    background-color: var(--blue-soft);
+    transform: scale(1.03);
+}
+
+.card, form, textarea, input{
+    border-radius: 12px;
+}
+
+textarea, input{
+    padding: 10px;
+    border: 1px solid #dbe7ff;
+    background-color: white;
+}
+
+.nav{
+    background-color: var(--blue-main);
+}
