@@ -4,6 +4,7 @@ import cors from "cors";
 import customOrderRoutes from "./Routes/CustomOrder.js";
 import dotenv from "dotenv";
 import userRoutes from './Routes/User.js'
+import reviewRoutes from "./Routes/review.js";
 
 dotenv.config();
 const web = express();
@@ -22,6 +23,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/iam")
 
 web.use("/api/custom-order", customOrderRoutes);
 web.use("/api/users", userRoutes);
+
+web.use(reviewRoutes);
 
 web.listen(5000, () => {
     console.log("Server running on http://localhost:5000");

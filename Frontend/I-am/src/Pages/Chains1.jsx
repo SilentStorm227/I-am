@@ -50,9 +50,19 @@ useEffect(()=>{
     localStorage.setItem("cartQuantity", quantity);
 }, [quantity]);
 
+useEffect(() => {
+    fetch("http://localhost:5000/api/reviews/1")
+        .then(res => res.json())
+        .then(data => setReviews(data));
+}, []);
+
+const average =
+    reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length || 0;
+
     return(
         <div>
             <h1 className="text">Flower trouser/skirt chain</h1>
+            <h2>Overall rating: {average.toFixed(1)} / 5 ⭐</h2>
 
             <Slideshow />
 
@@ -94,7 +104,7 @@ useEffect(()=>{
 
                 <p>Please rate from 1 to 5</p>
 
-                <input type="file" accept="image/*" onChange={(e) => setReviewImage(e. target.files[0])} />
+                <input type="file" accept="image/*" onChange={(e) => setReviewImage(e.target.files[0])} />
 
                 <br />
 
@@ -102,7 +112,20 @@ useEffect(()=>{
 
             </form>
 
-        </div>
+            <h2>Customer reviews</h2>
+
+            {reviews.map((r) => (
+                <div key={r._id} style={{border:"1px solid #ccc", padding:10, marginBottom:10}}>
+                    <p>⭐ {r.rating}/5</p>
+                    <p>{r.message}</p>
+
+                    {r.image && (
+                        <img src={`http://localhost:5000/uploads/${r.image}`} width="150" />
+                    )}
+                </div>
+            ))}            
+
+        </div>   
     )
 }
 
