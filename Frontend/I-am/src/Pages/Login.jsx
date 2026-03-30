@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../Style/login.css"
 
 function Login() {
     const [name, setName] = useState("");
@@ -32,7 +33,7 @@ function Login() {
 };
 
     return(
-        <div>
+        <div className="login-page" >
             <h1>Login</h1>
 
             <input placeholder="Username" value={name} onChange={(e) => setName(e.target.value)}></input><br /><br />

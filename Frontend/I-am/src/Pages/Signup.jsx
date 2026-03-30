@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../Style/signup.css"
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -28,7 +29,7 @@ function Signup() {
 };
 
     return(
-        <div>
+        <div className="signup-page" >
             <h1>Sign up</h1>
             <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value) } ></input><br /><br />
 
