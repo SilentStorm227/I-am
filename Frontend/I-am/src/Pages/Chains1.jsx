@@ -1,12 +1,12 @@
 import {useEffect, useState, useContext} from "react";
-import p1 from "../assets/2.jpg"
 import Slideshow from "./Slideshow";
 import "../Style/chains.css"
 import { cartContext } from "./Context";
 
 function Chains1() {
 
-const {addtoCart} = useContext(cartContext)
+const {addtoCart} = useContext(cartContext);
+
 const [reviewMessage, setReviewMessage] = useState("");
 const [rating, setRating] = useState(5);
 const [reviewImage, setReviewImage] = useState(null);
@@ -21,10 +21,17 @@ const handleReviewSubmit = async (e) =>{
     formData.append("rating", rating);
     if (reviewImage) formData.append("image", reviewImage);
 
-    await fetch("http://localhost:5000/api/reviews", {
-        method: "POST",
-        body: formData
-    });
+
+    const res = await fetch("http://localhost:5000/api/reviews", {
+    method: "POST",
+    body: formData
+});
+
+if (res.ok) {
+    const updated = await fetch("http://localhost:5000/api/reviews/1");
+    const data = await updated.json();
+    setReviews(data);
+}
 
     setReviewMessage("");
     setRating(5);
