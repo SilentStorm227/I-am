@@ -7,6 +7,29 @@ import { cartContext } from "./Context";
 function Chains1() {
 
 const {addtoCart} = useContext(cartContext)
+const [reviewMessage, setReviewMessage] = useState("");
+const [rating, setRating] = useState(5);
+const [reviewImage, setReviewImage] = useState(null);
+const [reviews, setReviews] = useState([]);
+
+const handleReviewSubmit = async (e) =>{
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("productId", 1);
+    formData.append("message", reviewMessage);
+    formData.append("rating", rating);
+    if (reviewImage) formData.append("image", reviewImage);
+
+    await fetch("http://localhost:5000/api/reviews", {
+        method: "POST",
+        body: formData
+    });
+
+    setReviewMessage("");
+    setRating(5);
+    setReviewImage(null);
+};
 
 const [quantity, setQuantity] = useState(1)
 const stock = 10;
@@ -59,6 +82,26 @@ useEffect(()=>{
                     quantity
                 )
             }>Add to cart</button>
+
+            <h2>Leave a review</h2>
+
+            <form onSubmit={handleReviewSubmit}>
+                <textarea placeholder="Write your review.." value={reviewMessage} onChange={(e) => setReviewMessage(e.target.value)} required />
+
+                    <br />
+
+                <input type="number" min="1" max="5" value={rating} onChange={(e) => setRating(e.target.value)} />
+
+                <p>Please rate from 1 to 5</p>
+
+                <input type="file" accept="image/*" onChange={(e) => setReviewImage(e. target.files[0])} />
+
+                <br />
+
+                <button type="submit">Send reviews</button>
+
+            </form>
+
         </div>
     )
 }
