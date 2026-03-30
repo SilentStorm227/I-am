@@ -1,0 +1,134 @@
+/* cart.css */
+
+/* Overall page styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--blue-bg);
+    color: var(--text-soft);
+    margin: 0;
+    padding: 20px;
+}
+
+/* Cart title */
+h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2.5rem;
+    color: var(--blue-main);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Empty cart message */
+.carttoptext {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-soft);
+}
+
+.carttoptext img {
+    width: 150px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+}
+
+/* Each cart item */
+.cart-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.cart-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-right: 20px;
+    border: 2px solid var(--blue-soft);
+}
+
+/* Item details */
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h4 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.3rem;
+    color: var(--blue-main);
+    margin: 0 0 10px 0;
+}
+
+.cart-item-details p {
+    margin: 5px 0;
+}
+
+/* Quantity controls */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.quantity-controls button {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--blue-soft);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.quantity-controls button:hover {
+    background-color: var(--blue-main);
+    transform: scale(1.1);
+}
+
+.quantity-controls span {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+/* Remove button */
+.cart-item button.remove-btn {
+    background-color: #FF6B6B;
+    margin-left: 15px;
+    padding: 6px 14px;
+}
+
+.cart-item button.remove-btn:hover {
+    background-color: #FF4C4C;
+    transform: scale(1.05);
+}
+
+/* Total price */
+.h2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.8rem;
+    color: var(--blue-main);
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item img {
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+}

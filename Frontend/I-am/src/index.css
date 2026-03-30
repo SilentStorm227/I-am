@@ -56,16 +56,3 @@ textarea, input{
 .nav{
     background-color: var(--blue-main);
 }
-
-
-/* Center the content only on Login and Signup pages 
-.login-page,
-.signup-page {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; vertical centering 
-    align-items: center;     /*horizontal centering
-    background-color: var(--blue-bg); /* optional, matches site background 
-    padding: 20px;
-}
-*/

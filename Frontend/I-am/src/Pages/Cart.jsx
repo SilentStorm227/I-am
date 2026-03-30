@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { cartContext } from "./Context";
+import "../Style/cart.css"
+import sad from "../assets/sad.jpg"
 
 function Cart() {
     const {cart, removefromCart, incQty, decQty} = useContext(cartContext);
@@ -9,44 +11,36 @@ function Cart() {
         0
     );
 
-    if(cart.length === 0 ){
-        return <h1>Your cart is empty!!! <br /> Go get something!!!!!!</h1>;
-    }
-
     return(
         <div>
             <h1>Your cart</h1>
 
-            {cart.map((item) =>(
-                <div key={item.id}>
+                {cart.length === 0 && <p className="carttoptext" >
+                                    <img src={sad} /> <br />
+                                    cart is empty
+                    </p>}
 
-                    <h4>{item.name}</h4>
-                {item.image && (
-                        <img 
-                            src={`http://localhost:5000/uploads/${item.image}`}
-                            width="100"
-                        />
-                    )}
+        {cart.map((item) => (
+  <div key={item.id} className="cart-item">
+    {item.image && (
+      <img src={`http://localhost:5000/uploads/${item.image}`} alt={item.name} />
+    )}
+    <div className="cart-item-details">
+      <h4>{item.name}</h4>
+      <p>Price: ${(item.price * item.quantity).toFixed(2)}</p>
 
-                    <p>Quantity: {item.quantity}</p>
-                    <p>Price: ${(Number(item.price || 0) * Number(item.quantity || 0)).toFixed(2)}</p>
-         <div>
+      <div className="quantity-controls">
+        <button onClick={() => decQty(item.id)}>-</button>
+        <span>{item.quantity}</span>
+        <button onClick={() => incQty(item.id)}>+</button>
+      </div>
 
-                <button onClick={() => decQty(item.id)}>-</button>
-                 <span style={{ margin: "0 10px" }}>{item.quantity}</span>
-                <button onClick={() => incQty(item.id)}>+</button>
-            </div>
+      <button className="remove-btn" onClick={() => removefromCart(item.id)}>Remove</button>
+    </div>
+  </div>
+))}
 
-            <button onClick={() => removefromCart(item.id)}>
-  Remove
-</button>
-                    </div>
-
-
-
-            ))}
-
-<h2 style={{marginTop:"20px"}}>
+<h2 className="h2" style={{marginTop:"20px"}}>
                 Total: ${totalPrice.toFixed(2)}
             </h2>
 
