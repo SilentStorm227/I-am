@@ -44,6 +44,8 @@ function Cart() {
                 Total: ${totalPrice.toFixed(2)}
             </h2>
 
+            <button className="h" >Checkout</button>
+
         </div>
     );
 }

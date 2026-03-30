@@ -117,6 +117,11 @@ h1 {
     margin-top: 20px;
 }
 
+
+.h {
+    text-align: right;
+}
+
 /* Responsive for small screens */
 @media (max-width: 600px) {
     .cart-item {
